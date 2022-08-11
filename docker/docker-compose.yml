@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql:8.0.30
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tcc_db
+    ports:
+      - "3306:3306"

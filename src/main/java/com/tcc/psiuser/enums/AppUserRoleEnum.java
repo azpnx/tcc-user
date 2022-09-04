@@ -5,5 +5,6 @@ import lombok.Setter;
 
 public enum AppUserRoleEnum {
     USER,
+    PSICOLOGO,
     ADMIN
 }

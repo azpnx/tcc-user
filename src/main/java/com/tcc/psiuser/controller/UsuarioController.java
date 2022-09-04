@@ -1,8 +1,7 @@
 package com.tcc.psiuser.controller;
 
-import com.tcc.psiuser.UsuarioService;
+import com.tcc.psiuser.service.UsuarioService;
 import com.tcc.psiuser.entity.Usuario;
-import com.tcc.psiuser.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping
 @RequiredArgsConstructor
 public class UsuarioController {
 

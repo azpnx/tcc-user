@@ -19,4 +19,6 @@ public class Usuario {
     private String password;
     @Enumerated(EnumType.STRING)
     private AppUserRoleEnum role;
+    private Boolean blocked = false;
+    private Boolean enabled = false;
 }

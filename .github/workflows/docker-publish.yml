@@ -23,12 +23,12 @@ jobs:
       
     - name: tag docker image
       run:
-        docker tag gasbiru/psi-gateway:0.0.1-SNAPSHOT ${{secrets.DOCKER_USERNAME}}/psi-gateway:${{github.run_id}}
+        docker tag gasbiru/psi-user:0.0.1-SNAPSHOT ${{secrets.DOCKER_USERNAME}}/psi-user:${{github.run_id}}
         
-        docker tag gasbiru/psi-gateway:0.0.1-SNAPSHOT ${{secrets.DOCKER_USERNAME}}/psi-gateway:latest
+        docker tag gasbiru/psi-user:0.0.1-SNAPSHOT ${{secrets.DOCKER_USERNAME}}/psi-user:latest
       
     - name : Push to docker
       run:
-        docker push ${{secrets.DOCKER_USERNAME}}/psi-gateway:${{github.run_id}}
+        docker push ${{secrets.DOCKER_USERNAME}}/psi-user:${{github.run_id}}
         
-        docker push ${{secrets.DOCKER_USERNAME}}/psi-gateway:latest
+        docker push ${{secrets.DOCKER_USERNAME}}/psi-user:latest

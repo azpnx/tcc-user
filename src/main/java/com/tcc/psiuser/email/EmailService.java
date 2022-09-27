@@ -28,7 +28,7 @@ public class EmailService implements EmailSender{
             helper.setText(email, true);
             helper.setTo(to);
             helper.setSubject("Confirme sua conta - TCC");
-            helper.setFrom("tcc@tcc.com");
+            helper.setFrom("psicotccunip2022@gmail.com");
             mailSender.send(mimeMessage);
 
         }catch (MessagingException e){

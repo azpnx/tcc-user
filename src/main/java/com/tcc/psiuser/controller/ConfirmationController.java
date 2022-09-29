@@ -1,4 +1,4 @@
-package com.tcc.psiuser.email;
+package com.tcc.psiuser.controller;
 
 import com.tcc.psiuser.email.token.ConfirmationTokenService;
 import com.tcc.psiuser.service.UsuarioService;

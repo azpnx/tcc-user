@@ -1,5 +1,6 @@
 package com.tcc.psiuser.service;
 
+import com.tcc.psiuser.dto.PasswordDTO;
 import com.tcc.psiuser.email.EmailService;
 import com.tcc.psiuser.email.token.ConfirmationToken;
 import com.tcc.psiuser.email.token.ConfirmationTokenService;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -21,11 +23,6 @@ import java.util.UUID;
 public class UsuarioService{
 
     private final UsuarioRepository repository;
-    private final ConfirmationTokenService tokenService;
-    private final EmailService emailService;
-
-    @Value("${endpoint.token-confirm}")
-    private String ENDPOINT_EMAIL;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -40,17 +37,10 @@ public class UsuarioService{
 
         repository.save(usuario);
 
-        String token = UUID.randomUUID().toString();
-        ConfirmationToken confirmationToken = new ConfirmationToken(
-                token,
-                LocalDateTime.now(),
-                LocalDateTime.now().plusMinutes(15),
-                usuario
-        );
+    }
 
-        tokenService.saveConfirmationToken(confirmationToken);
-        String link = MessageFormat.format("http://{0}/api/usuarios/confirmar?token=" + token, ENDPOINT_EMAIL);
-        emailService.send(usuario.getEmail(), BuildEmail.buildEmail(usuario.getEmail(), link));
+    public void update(Usuario usuario){
+        repository.save(usuario);
     }
 
     public Usuario findByEmail(String email){
@@ -62,4 +52,9 @@ public class UsuarioService{
         return repository.ativarUsuario(email);
     }
 
+    public void updatePassword(PasswordDTO passwordDTO){
+        Usuario usuario = findByEmail(passwordDTO.getEmail());
+        usuario.setPassword(bCryptPasswordEncoder.encode(passwordDTO.getPassword()));
+        update(usuario);
+    }
 }

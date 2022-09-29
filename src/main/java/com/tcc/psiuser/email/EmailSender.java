@@ -1,5 +1,6 @@
 package com.tcc.psiuser.email;
 
 public interface EmailSender {
-    void send(String to, String email);
+    void sendConfirmEmail(String to, String email);
+    void sendResetEmail(String to, String email);
 }

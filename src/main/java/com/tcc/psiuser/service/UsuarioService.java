@@ -8,9 +8,11 @@ import com.tcc.psiuser.repository.UsuarioRepository;
 import com.tcc.psiuser.utils.BuildEmail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -21,6 +23,9 @@ public class UsuarioService{
     private final UsuarioRepository repository;
     private final ConfirmationTokenService tokenService;
     private final EmailService emailService;
+
+    @Value("${endpoint.token-confirm}")
+    private String ENDPOINT_EMAIL;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -44,7 +49,7 @@ public class UsuarioService{
         );
 
         tokenService.saveConfirmationToken(confirmationToken);
-        String link = "http://localhost:8125/api/usuarios/confirmar?token=" + token;
+        String link = MessageFormat.format("http://{0}/api/usuarios/confirmar?token=" + token, ENDPOINT_EMAIL);
         emailService.send(usuario.getEmail(), BuildEmail.buildEmail(usuario.getEmail(), link));
     }
 

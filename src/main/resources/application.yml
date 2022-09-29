@@ -1,6 +1,9 @@
 server:
   port: 8383
 
+endpoint:
+  token-confirm: localhost:8125
+
 spring:
   application:
     name: psi-user

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
@@ -16,4 +17,13 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     @Query("UPDATE Usuario a " +
             "SET a.enabled = TRUE WHERE a.email = ?1")
     int ativarUsuario(String email);
+
+    @Query("SELECT u FROM Usuario u WHERE u.role = 'ALUNO'")
+    List<Usuario> getProfessionals();
+
+    @Query("SELECT u FROM Usuario u WHERE u.role = 'PACIENTE'")
+    List<Usuario> getPatients();
+
+    @Query("SELECT u FROM Usuario u WHERE u.role = 'PROFESSOR'")
+    List<Usuario> getTeachers();
 }

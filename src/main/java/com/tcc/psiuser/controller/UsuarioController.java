@@ -55,4 +55,19 @@ public class UsuarioController {
        return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/allProfessionals")
+    public ResponseEntity<?> getProfessionals(){
+        return ResponseEntity.ok(usuarioFacade.getProfessionals());
+    }
+
+    @GetMapping("/allPatients")
+    public ResponseEntity<?> getPatients(){
+        return ResponseEntity.ok(usuarioFacade.getPatients());
+    }
+
+    @GetMapping("/allTeachers")
+    public ResponseEntity<?> getTeachers(){
+        return ResponseEntity.ok(usuarioFacade.getTeachers());
+    }
+
 }

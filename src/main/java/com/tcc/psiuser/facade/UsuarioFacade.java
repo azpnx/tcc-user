@@ -10,9 +10,7 @@ import com.tcc.psiuser.enums.MessageEnum;
 import com.tcc.psiuser.service.PasswordService;
 import com.tcc.psiuser.service.UsuarioService;
 import com.tcc.psiuser.utils.BuildEmail;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -21,9 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.text.MessageFormat;
 import java.time.LocalDateTime;
-import java.time.chrono.ChronoLocalDate;
-import java.time.chrono.ChronoLocalDateTime;
-import java.util.Calendar;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -93,5 +89,17 @@ public class UsuarioFacade {
         }else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Token expirado!");
         }
+    }
+
+    public List<Usuario> getProfessionals(){
+        return usuarioService.getProfessionals();
+    }
+
+    public List<Usuario> getPatients(){
+        return usuarioService.getPatients();
+    }
+
+    public List<Usuario> getTeachers(){
+        return usuarioService.getTeachers();
     }
 }

@@ -1,22 +1,14 @@
 package com.tcc.psiuser.service;
 
 import com.tcc.psiuser.dto.PasswordDTO;
-import com.tcc.psiuser.email.EmailService;
-import com.tcc.psiuser.email.token.ConfirmationToken;
-import com.tcc.psiuser.email.token.ConfirmationTokenService;
 import com.tcc.psiuser.entity.Usuario;
 import com.tcc.psiuser.repository.UsuarioRepository;
-import com.tcc.psiuser.utils.BuildEmail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import java.text.MessageFormat;
-import java.time.LocalDateTime;
-import java.util.UUID;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -56,5 +48,17 @@ public class UsuarioService{
         Usuario usuario = findByEmail(passwordDTO.getEmail());
         usuario.setPassword(bCryptPasswordEncoder.encode(passwordDTO.getPassword()));
         update(usuario);
+    }
+
+    public List<Usuario> getProfessionals() {
+        return repository.getProfessionals();
+    }
+
+    public List<Usuario> getPatients() {
+        return repository.getPatients();
+    }
+
+    public List<Usuario> getTeachers() {
+        return repository.getTeachers();
     }
 }

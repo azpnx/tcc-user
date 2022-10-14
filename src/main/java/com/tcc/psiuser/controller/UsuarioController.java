@@ -26,7 +26,7 @@ public class UsuarioController {
         usuarioFacade.save(usuario);
     }
 
-    @GetMapping
+    @GetMapping("/findByEmail")
     public ResponseEntity<Usuario> findByEmail(@RequestParam String email){
         Usuario usuario = usuarioFacade.findByEmail(email);
         return ResponseEntity.ok(usuario);

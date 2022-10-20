@@ -17,13 +17,10 @@ public class Usuario {
     private Long id;
     @Column(unique = true, length = 60)
     private String email;
-    @JsonIgnore
     private String password;
     private String nome;
     @Enumerated(EnumType.STRING)
     private AppUserRoleEnum role;
-    @JsonIgnore
     private Boolean blocked = false;
-    @JsonIgnore
     private Boolean enabled = false;
 }

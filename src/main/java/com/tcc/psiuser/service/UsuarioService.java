@@ -1,7 +1,9 @@
 package com.tcc.psiuser.service;
 
+import com.tcc.psiuser.controller.response.UsuarioResponse;
 import com.tcc.psiuser.dto.PasswordDTO;
 import com.tcc.psiuser.entity.Usuario;
+import com.tcc.psiuser.mapper.UsuarioMapper;
 import com.tcc.psiuser.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import java.util.List;
 public class UsuarioService{
 
     private final UsuarioRepository repository;
+    private final UsuarioMapper usuarioMapper;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -50,15 +53,15 @@ public class UsuarioService{
         update(usuario);
     }
 
-    public List<Usuario> getProfessionals() {
-        return repository.getProfessionals();
+    public List<UsuarioResponse> getProfessionals() {
+        return usuarioMapper.usuariosToUsuarioResponse(repository.getProfessionals());
     }
 
-    public List<Usuario> getPatients() {
-        return repository.getPatients();
+    public List<UsuarioResponse> getPatients() {
+        return usuarioMapper.usuariosToUsuarioResponse(repository.getPatients());
     }
 
-    public List<Usuario> getTeachers() {
-        return repository.getTeachers();
+    public List<UsuarioResponse> getTeachers() {
+        return usuarioMapper.usuariosToUsuarioResponse(repository.getTeachers());
     }
 }

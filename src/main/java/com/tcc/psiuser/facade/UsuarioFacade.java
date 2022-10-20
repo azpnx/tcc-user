@@ -1,5 +1,6 @@
 package com.tcc.psiuser.facade;
 
+import com.tcc.psiuser.controller.response.UsuarioResponse;
 import com.tcc.psiuser.dto.PasswordDTO;
 import com.tcc.psiuser.email.EmailService;
 import com.tcc.psiuser.email.token.ConfirmationToken;
@@ -91,15 +92,15 @@ public class UsuarioFacade {
         }
     }
 
-    public List<Usuario> getProfessionals(){
+    public List<UsuarioResponse> getProfessionals(){
         return usuarioService.getProfessionals();
     }
 
-    public List<Usuario> getPatients(){
+    public List<UsuarioResponse> getPatients(){
         return usuarioService.getPatients();
     }
 
-    public List<Usuario> getTeachers(){
+    public List<UsuarioResponse> getTeachers(){
         return usuarioService.getTeachers();
     }
 }

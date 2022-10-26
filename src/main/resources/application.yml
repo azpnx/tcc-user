@@ -36,6 +36,11 @@ spring:
     sampler:
       probability: 1.0
 
+springdoc:
+  api-docs:
+    path: psi-user/v3/api-docs
+  show-actuator: true
+
 eureka:
   client:
     service-url:

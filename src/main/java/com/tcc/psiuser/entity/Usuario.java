@@ -19,6 +19,7 @@ public class Usuario {
     private String email;
     private String password;
     private String nome;
+    private String professor;
     @Enumerated(EnumType.STRING)
     private AppUserRoleEnum role;
     private Boolean blocked = false;

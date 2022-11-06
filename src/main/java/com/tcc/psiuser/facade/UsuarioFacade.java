@@ -107,4 +107,8 @@ public class UsuarioFacade {
     public List<UsuarioResponse> findByProfessor(String professor){
         return usuarioService.findyByProfessor(professor);
     }
+
+    public List<UsuarioResponse> getAll() {
+        return usuarioService.getAll();
+    }
 }

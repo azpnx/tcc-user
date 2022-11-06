@@ -74,6 +74,10 @@ public class UsuarioService{
         return usuarioMapper.usuariosToUsuarioResponse(repository.getTeachers());
     }
 
+    public List<UsuarioResponse> getAll(){
+        return usuarioMapper.usuariosToUsuarioResponse(repository.findAll());
+    }
+
     public List<UsuarioResponse> findyByProfessor(String professor){
         return usuarioMapper.usuariosToUsuarioResponse(repository.findByProfessor(professor));
     }

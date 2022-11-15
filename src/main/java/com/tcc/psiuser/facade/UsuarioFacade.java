@@ -58,7 +58,7 @@ public class UsuarioFacade {
         );
 
         tokenService.saveConfirmationToken(confirmationToken);
-        String link = MessageFormat.format("http://{0}/api/usuarios/confirmar?token=" + token, ENDPOINT_EMAIL);
+        String link = MessageFormat.format("http://34.95.148.80:9411/api/usuarios/confirmar?token=" + token, ENDPOINT_EMAIL);
         emailService.sendConfirmEmail(usuario.getEmail(), BuildEmail.buildEmail(MessageEnum.REGISTER.getTitulo(), usuario.getEmail(), MessageEnum.REGISTER.getDescricao(), link, messageEnum.REGISTER.getBotao()));
     }
 
@@ -71,7 +71,7 @@ public class UsuarioFacade {
         String token = UUID.randomUUID().toString();
         passwordService.createPasswordResetTokenForUser(usuario, token);
 
-        String link = MessageFormat.format("http://{0}/api/usuarios/reset?token=" + token, ENDPOINT_EMAIL);
+        String link = MessageFormat.format("http://34.95.148.80:9411/api/usuarios/changePassword?token=" + token, ENDPOINT_EMAIL);
         emailService.sendResetEmail(email,BuildEmail.buildEmail(MessageEnum.REGISTER.getTitulo(), usuario.getEmail(), MessageEnum.RESET.getDescricao(), link, MessageEnum.RESET.getBotao()));
     }
 

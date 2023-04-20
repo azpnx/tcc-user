@@ -48,7 +48,7 @@ public class UsuarioController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/changePassword")
     public ResponseEntity<?> showChangePasswordPage(@RequestParam("token") String token) {
-        if (usuarioFacade.validatePasswordResetToken(token)) {
+        if (Boolean.TRUE.equals(usuarioFacade.validatePasswordResetToken(token))) {
             return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("http://localhost:3000/RedefinitionReturn?token=" + token)).build();
         }else {
             return ResponseEntity.badRequest().body("TOKEN EXPIRADO OU INEXISTENTE");
@@ -75,22 +75,11 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioFacade.getPatients());
     }
 
-    @Operation(summary = "Lista todos os Professores")
-    @GetMapping("/allTeachers")
-    public ResponseEntity<?> getTeachers(){
-        return ResponseEntity.ok(usuarioFacade.getTeachers());
-    }
 
-    @Operation(summary = "Lista todos os Professores")
+    @Operation(summary = "Lista todos os usuarios")
     @GetMapping("/all")
     public ResponseEntity<?> getAll(){
         return ResponseEntity.ok(usuarioFacade.getAll());
-    }
-
-    @Operation(summary = "Lista alunos associados a um professor")
-    @GetMapping("/findByTeacher")
-    public ResponseEntity<?> getTeachers(@RequestParam String professor){
-        return ResponseEntity.ok(usuarioFacade.findByProfessor(professor));
     }
 
 }

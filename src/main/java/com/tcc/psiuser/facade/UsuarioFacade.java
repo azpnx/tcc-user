@@ -100,14 +100,6 @@ public class UsuarioFacade {
         return usuarioService.getPatients();
     }
 
-    public List<UsuarioResponse> getTeachers(){
-        return usuarioService.getTeachers();
-    }
-
-    public List<UsuarioResponse> findByProfessor(String professor){
-        return usuarioService.findyByProfessor(professor);
-    }
-
     public List<UsuarioResponse> getAll() {
         return usuarioService.getAll();
     }

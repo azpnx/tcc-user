@@ -24,10 +24,4 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     @Query("SELECT u FROM Usuario u WHERE u.role = 'PACIENTE'")
     List<Usuario> getPatients();
-
-    @Query("SELECT u FROM Usuario u WHERE u.role = 'PROFESSOR'")
-    List<Usuario> getTeachers();
-
-    @Query("SELECT u FROM Usuario u WHERE u.role = 'ALUNO' and u.professor = :professor")
-    List<Usuario> findByProfessor(@Param("professor") String professor);
 }

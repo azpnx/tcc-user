@@ -49,7 +49,7 @@ public class UsuarioController {
     @GetMapping("/changePassword")
     public ResponseEntity<?> showChangePasswordPage(@RequestParam("token") String token) {
         if (usuarioFacade.validatePasswordResetToken(token)) {
-            return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("http://localhost:3000/RedefinitionReturn?token=" + token)).build();
+            return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("http://35.247.228.233/RedefinitionReturn?token=" + token)).build();
         }else {
             return ResponseEntity.badRequest().body("TOKEN EXPIRADO OU INEXISTENTE");
         }

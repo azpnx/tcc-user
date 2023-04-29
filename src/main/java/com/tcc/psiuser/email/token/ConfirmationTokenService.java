@@ -3,9 +3,12 @@ package com.tcc.psiuser.email.token;
 import com.tcc.psiuser.repository.UsuarioRepository;
 import com.tcc.psiuser.service.UsuarioService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -30,7 +33,7 @@ public class ConfirmationTokenService {
     }
 
     @Transactional
-    public String confirmToken(String token) {
+    public ResponseEntity<?> confirmToken(String token) {
         ConfirmationToken confirmationToken = getToken(token)
                 .orElseThrow(() ->
                         new IllegalStateException("token not found"));
@@ -48,6 +51,6 @@ public class ConfirmationTokenService {
         setConfirmedAt(token);
         repository.ativarUsuario(
                 confirmationToken.getUsuario().getEmail());
-        return "Confirmado";
+        return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("http://35.247.228.233/EmailConfirmation")).build();
     }
 }

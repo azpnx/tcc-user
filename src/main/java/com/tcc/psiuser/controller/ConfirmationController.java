@@ -3,6 +3,7 @@ package com.tcc.psiuser.controller;
 import com.tcc.psiuser.email.token.ConfirmationTokenService;
 import com.tcc.psiuser.service.UsuarioService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +17,7 @@ public class ConfirmationController {
     private ConfirmationTokenService confirmationTokenService;
 
     @GetMapping(path = "confirmar")
-    public String confirm(@RequestParam("token") String token) {
+    public ResponseEntity<?> confirm(@RequestParam("token") String token) {
         return confirmationTokenService.confirmToken(token);
     }
 }

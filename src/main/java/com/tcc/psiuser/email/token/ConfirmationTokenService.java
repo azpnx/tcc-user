@@ -51,6 +51,6 @@ public class ConfirmationTokenService {
         setConfirmedAt(token);
         repository.ativarUsuario(
                 confirmationToken.getUsuario().getEmail());
-        return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("http://35.247.228.233/EmailConfirmation")).build();
+        return ResponseEntity.status(HttpStatus.PERMANENT_REDIRECT).location(URI.create("http://35.247.228.233/EmailConfirmation")).build();
     }
 }

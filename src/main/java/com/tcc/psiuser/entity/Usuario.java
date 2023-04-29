@@ -18,8 +18,7 @@ public class Usuario {
     @Column(unique = true, length = 60)
     private String email;
     private String password;
-    private String nome;
-    private String professor;
+    private String name;
     @Enumerated(EnumType.STRING)
     private AppUserRoleEnum role;
     private Boolean blocked = false;

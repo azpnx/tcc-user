@@ -57,7 +57,8 @@ public class UsuarioService{
     }
 
     public List<UsuarioResponse> getProfessionals() {
-        return usuarioMapper.usuariosToUsuarioResponse(repository.getProfessionals());
+        List<Usuario> response = repository.getProfessionals();
+        return usuarioMapper.usuariosToUsuarioResponse(response);
     }
 
     public List<UsuarioResponse> getPatients() {

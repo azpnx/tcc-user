@@ -27,12 +27,6 @@ public class UsuarioService{
 
     public void save(Usuario usuario){
 
-        if (AppUserRoleEnum.ALUNO.equals(usuario.getRole())){
-            if (Objects.isNull(usuario.getProfessor())){
-                throw new IllegalStateException("Você precisa adicionar um professor!");
-            }
-        }
-
         boolean userExistis = repository
                 .findByEmail(usuario.getEmail())
                 .isPresent();
@@ -78,7 +72,4 @@ public class UsuarioService{
         return usuarioMapper.usuariosToUsuarioResponse(repository.findAll());
     }
 
-    public List<UsuarioResponse> findyByProfessor(String professor){
-        return usuarioMapper.usuariosToUsuarioResponse(repository.findByProfessor(professor));
-    }
 }

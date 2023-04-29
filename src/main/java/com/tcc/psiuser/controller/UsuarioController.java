@@ -87,10 +87,4 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioFacade.getAll());
     }
 
-    @Operation(summary = "Lista alunos associados a um professor")
-    @GetMapping("/findByTeacher")
-    public ResponseEntity<?> getTeachers(@RequestParam String professor){
-        return ResponseEntity.ok(usuarioFacade.findByProfessor(professor));
-    }
-
 }

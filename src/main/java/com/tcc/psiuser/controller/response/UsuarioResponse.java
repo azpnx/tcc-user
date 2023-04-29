@@ -8,6 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 public class UsuarioResponse {
     private String email;
-    private String name;
+    private String nome;
     private AppUserRoleEnum role;
 }

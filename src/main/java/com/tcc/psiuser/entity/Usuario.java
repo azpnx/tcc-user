@@ -18,7 +18,7 @@ public class Usuario {
     @Column(unique = true, length = 60)
     private String email;
     private String password;
-    private String name;
+    private String nome;
     @Enumerated(EnumType.STRING)
     private AppUserRoleEnum role;
     private Boolean blocked = false;
